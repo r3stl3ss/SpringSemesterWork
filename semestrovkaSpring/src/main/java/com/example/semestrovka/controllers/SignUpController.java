@@ -21,6 +21,6 @@ public class SignUpController {
     public String signUp(SignUpForm suf) {
         System.out.println(suf);
         signUpService.signUp(suf);
-        return "redirect:/upload";
+        return "redirect:/signIn";
     }
 }

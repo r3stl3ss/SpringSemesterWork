@@ -8,13 +8,14 @@
     <title>Sign up</title>
 </head>
 <body>
-<h1>SIGN UP</h1>
-    <form action="/signUp" method="post">
-        <input name="name" type="text" placeholder="INPUT YOUR NAME">
-        <input name="email" type="email" placeholder="INPUT EMAIL">
+<h1>SIGN IN</h1>
+    <form action="/signIn" method="post">
         <input name="password" type="password" placeholder="INPUT PASSWORD">
         <input name="username" type="text" placeholder="INPUT NICKNAME">
-        <input type="submit" value="SIGN UP">
+        <label>
+            <input type="checkbox" name="remember_me">remember me
+        </label>
+        <input type="submit" value="SIGN IN">
     </form>
 </body>
 </html>
