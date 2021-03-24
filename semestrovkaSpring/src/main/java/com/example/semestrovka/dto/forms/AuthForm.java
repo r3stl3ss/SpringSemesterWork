@@ -12,8 +12,8 @@ import javax.validation.constraints.NotBlank;
 @Builder
 @Data
 public class AuthForm {
-    @NotBlank(message = "email is mandatory")
+    //@NotBlank(message = "email is mandatory")
     private String email;
-    @NotBlank(message = "password is mandatory")
+    //@NotBlank(message = "password is mandatory")
     private String password;
 }
