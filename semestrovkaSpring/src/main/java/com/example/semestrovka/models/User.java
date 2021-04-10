@@ -29,31 +29,5 @@ public class User {
     private String username;
 
     @NotBlank(message = "Password is mandatory, too")
-    private String hashPassword;
-
-    @Enumerated(value = EnumType.STRING)
-    private State state;
-
-    @Enumerated(value = EnumType.STRING)
-    private Role role;
-
-    public enum State {
-        ACTIVE, BANNED
-    }
-
-    public enum Role {
-        USER, SUPERUSER
-    }
-
-    public boolean isActive() {
-        return this.state == State.ACTIVE;
-    }
-
-    public boolean isBanned() {
-        return this.state == State.BANNED;
-    }
-
-    public boolean isSuperuser() {
-        return this.role == Role.SUPERUSER;
-    }
+    private String password;
 }
