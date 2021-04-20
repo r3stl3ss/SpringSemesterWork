@@ -19,15 +19,40 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @NotBlank(message = "Name is mandatory")
+    //TODO: приделать констрейнты к столбцам таблиц (касается всех)
     private String name;
 
-    @NotBlank(message = "Email is mandatory")
     private String email;
 
-    @NotBlank(message = "Username is mandatory")
     private String username;
 
-    @NotBlank(message = "Password is mandatory, too")
-    private String password;
+    private String hashPassword;
+
+    @Enumerated(value = EnumType.STRING)
+    private State state;
+
+    @Enumerated(value = EnumType.STRING)
+    private Role role;
+
+    private String activationCode;
+
+    public enum State {
+        ACTIVE, BANNED
+    }
+
+    public enum Role {
+        USER, SUPERUSER
+    }
+
+    public boolean isActive() {
+        return this.state == State.ACTIVE;
+    }
+
+    public boolean isBanned() {
+        return this.state == State.BANNED;
+    }
+
+    public boolean isSuperuser() {
+        return this.role == Role.SUPERUSER;
+    }
 }

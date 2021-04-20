@@ -53,7 +53,7 @@ public class LocalizeConfig implements WebMvcConfigurer {
 
     @Override
     public MessageCodesResolver getMessageCodesResolver() {
-        DefaultMessageCodesResolver dmcr = new DefaultMessageCodesResolver();
+        var dmcr = new DefaultMessageCodesResolver();
         dmcr.setMessageCodeFormatter(DefaultMessageCodesResolver.Format.POSTFIX_ERROR_CODE);
         return dmcr;
     }

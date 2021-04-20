@@ -4,12 +4,14 @@ import com.example.semestrovka.repositories.FilesRepository;
 import com.example.semestrovka.services.interfaces.UploadFileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.UUID;
 
+@Service
 public class UploadFileServiceImpl implements UploadFileService {
 
     @Autowired
@@ -28,7 +30,8 @@ public class UploadFileServiceImpl implements UploadFileService {
             String uuidFile = UUID.randomUUID().toString();
             String finalFileName = uuidFile + "." + file.getOriginalFilename();
 
-            file.transferTo(new File(uploadPath + "/" + finalFileName));
+            file.transferTo(new File(uploadPath + File.separator + finalFileName));
+
         }
     }
 

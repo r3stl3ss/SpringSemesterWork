@@ -2,6 +2,7 @@ package com.example.semestrovka.controllers;
 
 import com.example.semestrovka.models.UploadableFile;
 import com.example.semestrovka.repositories.FilesRepository;
+import com.example.semestrovka.services.interfaces.UploadFileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -19,10 +20,7 @@ import java.util.UUID;
 public class FileUploadController {
 
     @Autowired
-    private FilesRepository fr;
-
-    @Value("${upload.path}")
-    private String uploadPath;
+    private UploadFileService ufs;
 
     @GetMapping("/upload")
     public String getUploadPage() {
@@ -34,19 +32,11 @@ public class FileUploadController {
             @RequestParam("file") MultipartFile file,
             Map<String, Object> model) throws IOException
     {
-        if (file != null) {
-            File uploadFolder = new File(uploadPath);
-            if (!uploadFolder.exists()) {
-                uploadFolder.mkdir();
-            }
-            String uuidFile = UUID.randomUUID().toString();
-            String finalFileName = uuidFile + "." + file.getOriginalFilename();
-
-            file.transferTo(new File(uploadPath + "/" + finalFileName));
+        if (!file.isEmpty()) {
+            ufs.uploadFile(file);
+        } else {
+            model.put("message", "file wrong");
         }
-        Iterable<UploadableFile> files = fr.findAll();
-
-        model.put("files", files);
 
         return "redirect:/upload";
     }
