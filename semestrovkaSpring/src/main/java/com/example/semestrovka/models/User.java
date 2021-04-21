@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.Constraint;
 import javax.validation.constraints.NotBlank;
 
 @Entity
@@ -20,12 +21,16 @@ public class User {
     private long id;
 
     //TODO: приделать констрейнты к столбцам таблиц (касается всех)
+    @Column(nullable=false)
     private String name;
 
+    @Column(nullable=false)
     private String email;
 
+    @Column(nullable=false, unique=true)
     private String username;
 
+    @Column(nullable=false)
     private String hashPassword;
 
     @Enumerated(value = EnumType.STRING)

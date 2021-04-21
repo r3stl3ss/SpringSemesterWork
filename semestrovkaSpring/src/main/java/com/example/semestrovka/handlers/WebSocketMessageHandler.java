@@ -1,6 +1,7 @@
 package com.example.semestrovka.handlers;
 
 import com.example.semestrovka.dto.MessageDto;
+import com.example.semestrovka.repositories.MessagesRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -17,6 +18,9 @@ public class WebSocketMessageHandler extends TextWebSocketHandler {
     @Autowired
     private ObjectMapper om;
 
+    @Autowired
+    private MessagesRepository mr;
+
     private static final Map<String, WebSocketSession> sessions = new HashMap<>();
 
     @Override
@@ -24,9 +28,11 @@ public class WebSocketMessageHandler extends TextWebSocketHandler {
         System.out.println(message.getPayload());
         MessageDto messageFromJSON = om.readValue(message.getPayload(), MessageDto.class);
 
-        if (!sessions.containsKey(messageFromJSON.getFrom())) {
-            sessions.put(messageFromJSON.getFrom(), session);
+        if (!sessions.containsKey(messageFromJSON.getSender())) {
+            sessions.put(messageFromJSON.getSender(), session);
         }
+
+        mr.save(MessageDto.fromDto(messageFromJSON));
 
         for (WebSocketSession curSession : sessions.values()) {
             curSession.sendMessage(message);

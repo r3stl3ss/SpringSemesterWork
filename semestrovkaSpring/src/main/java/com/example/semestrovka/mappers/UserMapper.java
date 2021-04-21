@@ -12,15 +12,15 @@ import org.springframework.stereotype.Component;
 public interface UserMapper {
     
 
-    @Mapping(target = "userId", source = "dto.id")
-    @Mapping(target = "userEmail", source = "dto.email")
-    @Mapping(target = "userUsername", source = "dto.username")
-    User userDtoToUser(UserDto userDto);
+    //@Mapping(target = "userId", source = "dto.id")
+    //@Mapping(target = "userEmail", source = "dto.email")
+    //@Mapping(target = "userUsername", source = "dto.username")
+   // User userDtoToUser(UserDto userDto);
 
-    @Mapping(target = "userId", source = "entity.id")
-    @Mapping(target = "userEmail", source = "entity.email")
-    @Mapping(target = "userUsername", source = "entity.username")
-    UserDto userToUserDto(User user);
+   // @Mapping(target = "userId", source = "entity.id")
+   // @Mapping(target = "userEmail", source = "entity.email")
+   // @Mapping(target = "userUsername", source = "entity.username")
+   // UserDto userToUserDto(User user);
 }
 
 
