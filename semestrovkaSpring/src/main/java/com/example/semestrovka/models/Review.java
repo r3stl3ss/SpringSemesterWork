@@ -9,6 +9,8 @@ import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import java.io.File;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Entity
 @Table(name="reviews")
@@ -21,7 +23,7 @@ public class Review {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(length = 10000)
+    @Column(length = 100000)
     private String text;
 
     @Column(length = 100)
@@ -31,10 +33,17 @@ public class Review {
     @Enumerated(EnumType.ORDINAL)
     private Rating rating;
 
+    @Column
     private File picture;
 
     public enum Rating {
         ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN
     }
 
+    @Column(nullable=false)
+    private LocalDateTime createdAt;
+
+    @ManyToOne
+    @JoinColumn(name="author_id")
+    private User author;
 }

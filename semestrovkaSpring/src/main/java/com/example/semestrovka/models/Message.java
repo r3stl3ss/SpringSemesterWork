@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name="chat_messages")
@@ -13,14 +14,19 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Builder
 @Data
-//TODO: переделать, от кого сообщение, и прицепить таймстамп
 public class Message {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     
-    @Column(length = 10000, nullable=false)
+    @Column(length = 10000, nullable=false, updatable=false)
     private String text;
-    
+
+    //TODO: стринг сендер заменить на юзер сендер, но это когда настрою секьюрити и смогу в сообщение кидать ник пользователя
+    @Column(nullable=false, updatable=false)
     private String sender;
+
+    @Column(nullable=false, updatable=false)
+    private LocalDateTime createdAt;
+
 }

@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import javax.validation.Constraint;
 import javax.validation.constraints.NotBlank;
+import java.io.File;
+import java.util.List;
 
 @Entity
 @Table(name = "users_accounts")
@@ -24,7 +26,7 @@ public class User {
     @Column(nullable=false)
     private String name;
 
-    @Column(nullable=false)
+    @Column(nullable=false, unique=true)
     private String email;
 
     @Column(nullable=false, unique=true)
@@ -40,6 +42,14 @@ public class User {
     private Role role;
 
     private String activationCode;
+
+    @OneToMany(mappedBy = "author")
+    private List<Review> reviews;
+
+    @Column(length = 150)
+    private String about;
+
+    private File avatar;
 
     public enum State {
         ACTIVE, BANNED
