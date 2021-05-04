@@ -28,13 +28,11 @@ public class SignUpController {
     public String signUp(@Valid SignUpForm suf, BindingResult br, Model model) {
         if (br.hasErrors()) {
             //TODO:remove debug
-            System.out.println("беды с формой регистрации");
             model.addAttribute("signUpForm", "Проблема с формой, уберите это сообщение при деплое");
             return "signUpPage";
         }
         if (!signUpService.signUp(suf)) {
             //TODO:remove debug
-            System.out.println("пользователь уже есть, нах ты дважды регаешься");
             model.addAttribute("signUpForm", "Пользователь уже существует");
             return "signUpPage";
         }

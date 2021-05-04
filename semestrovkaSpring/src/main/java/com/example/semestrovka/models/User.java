@@ -22,7 +22,6 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    //TODO: приделать констрейнты к столбцам таблиц (касается всех)
     @Column(nullable=false)
     private String name;
 
@@ -42,6 +41,12 @@ public class User {
     private Role role;
 
     private String activationCode;
+
+    private boolean proved;
+
+    private boolean phoneProved;
+
+    private String phone = "";
 
     @OneToMany(mappedBy = "author")
     private List<Review> reviews;

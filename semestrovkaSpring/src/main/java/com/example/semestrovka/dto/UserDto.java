@@ -15,6 +15,7 @@ public class UserDto {
     private String username;
     private String code;
     private String email;
+
     public static UserDto fromUser(User user) {
         return UserDto.builder()
                 .id(user.getId())
