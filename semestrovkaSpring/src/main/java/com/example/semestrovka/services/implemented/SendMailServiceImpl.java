@@ -25,4 +25,5 @@ public class SendMailServiceImpl implements SendMailService {
         mailSender.send(mailMessage);
 
     }
+
 }
