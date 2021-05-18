@@ -61,7 +61,6 @@ public class SignUpServiceImpl implements SignUpService {
         if (user == null) {
             return false;
         }
-
         user.setActivationCode(null);
         usersRepository.save(user);
         return true;

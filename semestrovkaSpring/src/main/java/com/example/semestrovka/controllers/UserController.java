@@ -41,7 +41,7 @@ public class UserController {
         return new ResponseEntity<>(viewUserService.updateUser(id, form), HttpStatus.OK);
     }
 
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('SUPERUSER')")
     @DeleteMapping("/users/{id}")
     public ResponseEntity<?> deleteUsers(@PathVariable Long id) {
         viewUserService.deleteUser(id);

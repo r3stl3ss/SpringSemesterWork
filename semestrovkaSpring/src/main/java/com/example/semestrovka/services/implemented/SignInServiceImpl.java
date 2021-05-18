@@ -9,6 +9,7 @@ import com.example.semestrovka.services.interfaces.SignInService;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.SneakyThrows;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -18,9 +19,11 @@ import java.util.Optional;
 
 @Service
 public class SignInServiceImpl implements SignInService {
-    private UsersRepository ur;
+    @Autowired
+    private UsersRepository usersRepository;
 
-    private PasswordEncoder pe;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Value("${jwt.secret}")
     private String secret;
@@ -28,15 +31,17 @@ public class SignInServiceImpl implements SignInService {
     @SneakyThrows
     @Override
     public TokenDto signIn(AuthForm form) {
-        Optional<User> signingIn = ur.findByEmail(form.getEmail());
+        Optional<User> signingIn = usersRepository.findByEmail(form.getEmail());
 
         if (signingIn.isPresent()) {
             User user = signingIn.get();
-            if (pe.matches(form.getPassword(), user.getHashPassword())) {
+            if (passwordEncoder.matches(form.getPassword(), user.getHashPassword())) {
                 String token = Jwts.builder()
                         .setSubject(String.valueOf(user.getId()))
                         .claim("name", user.getUsername())
                         .claim("role", user.getRole().name())
+                        .claim("email", user.getEmail())
+                        .claim("state", user.getState().name())
                         .signWith(SignatureAlgorithm.HS256, secret)
                         .compact();
                 return new TokenDto(token);

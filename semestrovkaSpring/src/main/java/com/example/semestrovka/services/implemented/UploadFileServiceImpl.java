@@ -15,7 +15,7 @@ import java.util.UUID;
 public class UploadFileServiceImpl implements UploadFileService {
 
     @Autowired
-    private FilesRepository fr;
+    private FilesRepository filesRepository;
 
     @Value("${upload.path}")
     private String uploadPath;
