@@ -1,7 +1,6 @@
 package com.example.semestrovka.dto;
 
 import com.example.semestrovka.models.Review;
-import com.example.semestrovka.models.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

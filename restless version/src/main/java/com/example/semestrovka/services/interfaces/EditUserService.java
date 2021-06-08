@@ -1,8 +1,8 @@
 package com.example.semestrovka.services.interfaces;
 
 import com.example.semestrovka.dto.UserDto;
-import com.example.semestrovka.dto.forms.ProfileUsernameEditForm;
 import com.example.semestrovka.dto.forms.ProfilePasswordEditForm;
+import com.example.semestrovka.dto.forms.ProfileUsernameEditForm;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;

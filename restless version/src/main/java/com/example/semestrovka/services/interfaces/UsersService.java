@@ -3,7 +3,6 @@ package com.example.semestrovka.services.interfaces;
 import com.example.semestrovka.models.User;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface UsersService {
     public List<User> getAllUsers();

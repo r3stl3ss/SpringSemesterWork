@@ -1,9 +1,6 @@
 package com.example.semestrovka.mappers;
 
-import com.example.semestrovka.dto.MessageDto;
-import com.example.semestrovka.models.Message;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 import org.springframework.stereotype.Component;
 
 @Mapper

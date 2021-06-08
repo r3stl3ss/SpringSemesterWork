@@ -3,7 +3,6 @@ package com.example.semestrovka.dto.forms;
 import com.example.semestrovka.validation.ValidPassword;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.Email;

@@ -3,13 +3,12 @@ package com.example.semestrovka.controllers;
 import com.example.semestrovka.dto.UserDto;
 import com.example.semestrovka.dto.forms.CodeInsertForm;
 import com.example.semestrovka.dto.forms.PhoneConfirmForm;
-import com.example.semestrovka.dto.forms.ProfileUsernameEditForm;
 import com.example.semestrovka.dto.forms.ProfilePasswordEditForm;
+import com.example.semestrovka.dto.forms.ProfileUsernameEditForm;
 import com.example.semestrovka.models.User;
 import com.example.semestrovka.security.details.UserDetailsImpl;
 import com.example.semestrovka.services.interfaces.EditUserService;
 import com.example.semestrovka.services.interfaces.PhoneConfirmService;
-import com.example.semestrovka.services.interfaces.SmsSendService;
 import com.example.semestrovka.services.interfaces.UsersService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -40,7 +39,6 @@ public class EditProfileController {
         model.addAttribute("userName", userDto.getName());
         model.addAttribute("nameEditForm", new ProfileUsernameEditForm());
         model.addAttribute("passwordEditForm", new ProfilePasswordEditForm());
-
         return "edit";
     }
 
@@ -115,6 +113,7 @@ public class EditProfileController {
         boolean confirmed = phoneConfirmService.verifyPhone(codeInsertForm, userDto);
         if (confirmed) {
             model.addAttribute("success_confirm_message", "Phone confirmed!");
+            userDetails.provePhone();
             return "redirect:/editProfile";
         } else {
             model.addAttribute("fail_confirm_message", "Wrong confirmation code");

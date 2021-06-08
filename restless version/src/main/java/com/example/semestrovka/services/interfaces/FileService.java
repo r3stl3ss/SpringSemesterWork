@@ -1,6 +1,5 @@
 package com.example.semestrovka.services.interfaces;
 
-import com.example.semestrovka.dto.ReviewDto;
 import com.example.semestrovka.dto.UserDto;
 import org.springframework.web.multipart.MultipartFile;
 

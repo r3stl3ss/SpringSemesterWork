@@ -1,14 +1,9 @@
 package com.example.semestrovka.services.implemented;
 
-import com.example.semestrovka.dto.ReviewDto;
 import com.example.semestrovka.dto.UserDto;
-import com.example.semestrovka.models.Review;
 import com.example.semestrovka.models.User;
-import com.example.semestrovka.repositories.FilesRepository;
-import com.example.semestrovka.repositories.ReviewsRepository;
 import com.example.semestrovka.repositories.UsersRepository;
 import com.example.semestrovka.services.interfaces.FileService;
-import com.example.semestrovka.services.interfaces.ReviewService;
 import com.example.semestrovka.services.interfaces.UsersService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

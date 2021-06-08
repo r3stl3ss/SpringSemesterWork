@@ -41,15 +41,4 @@ public class SignUpController {
         System.out.println("Залогинен успешно");
         return "redirect:/signIn";
     }
-
-    @GetMapping("/activate/{code}")
-    public String activate(Model model, @PathVariable String code) throws ActivationCodeDoesNotExistException {
-        boolean isActivated = signUpService.activateUser(code);
-        if (isActivated) {
-            System.out.println("Activation successful");
-            return "signInPage";
-        }
-        System.out.println("Activation is not successful");
-        return "signUpPage";
-    }
 }

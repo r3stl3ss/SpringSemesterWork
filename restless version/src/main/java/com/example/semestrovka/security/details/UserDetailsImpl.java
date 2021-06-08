@@ -24,6 +24,10 @@ public class UserDetailsImpl implements UserDetails {
         return this.user.isPhoneProved();
     }
 
+    public void provePhone() {
+        this.user.setPhoneProved(true);
+    }
+
     public Long getId() {
         return this.user.getId();
     }

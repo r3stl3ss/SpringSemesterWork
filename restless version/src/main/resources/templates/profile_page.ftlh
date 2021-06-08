@@ -26,5 +26,5 @@ YOUR PROFILE
     </div>
 </#if>
 <br>
-<button><a href="http://localhost/editProfile">Edit Profile</a></button>
+<button><a href="/editProfile">Edit Profile</a></button>
 </@template.header>

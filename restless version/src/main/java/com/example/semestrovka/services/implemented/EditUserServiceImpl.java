@@ -1,8 +1,8 @@
 package com.example.semestrovka.services.implemented;
 
 import com.example.semestrovka.dto.UserDto;
-import com.example.semestrovka.dto.forms.ProfileUsernameEditForm;
 import com.example.semestrovka.dto.forms.ProfilePasswordEditForm;
+import com.example.semestrovka.dto.forms.ProfileUsernameEditForm;
 import com.example.semestrovka.models.User;
 import com.example.semestrovka.repositories.UsersRepository;
 import com.example.semestrovka.services.interfaces.EditUserService;

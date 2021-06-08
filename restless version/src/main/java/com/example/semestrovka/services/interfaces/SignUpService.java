@@ -5,7 +5,5 @@ import com.example.semestrovka.exceptions.ActivationCodeDoesNotExistException;
 
 public interface SignUpService {
     boolean signUp(SignUpForm form);
-
-    boolean activateUser(String code) throws ActivationCodeDoesNotExistException;
 }
 

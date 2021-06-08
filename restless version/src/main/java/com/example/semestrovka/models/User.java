@@ -4,11 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
-import javax.validation.Constraint;
-import javax.validation.constraints.NotBlank;
-import java.io.File;
 import java.util.List;
 
 @Entity
@@ -49,6 +48,7 @@ public class User {
     private String activationCode;
 
     @OneToMany(mappedBy = "author")
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<Review> reviews;
 
     @Column(length = 150)

@@ -6,11 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import java.io.File;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 
 @Entity
 @Table(name="reviews")

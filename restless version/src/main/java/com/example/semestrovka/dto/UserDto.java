@@ -1,7 +1,5 @@
 package com.example.semestrovka.dto;
 
-import com.example.semestrovka.dto.forms.AuthForm;
-import com.example.semestrovka.models.Review;
 import com.example.semestrovka.models.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -23,7 +22,7 @@ public class UserDto {
     private String phone;
     private boolean isPhoneConfirmed;
     private String imagePath;
-    private List<Review> listOfReviews;
+    private List<ReviewDto> listOfReviews;
     private int countOfSubscriptions;
     private int countOfSubscribers;
     public static UserDto fromUser(User user) {
@@ -35,7 +34,7 @@ public class UserDto {
                 .phone(user.getPhone())
                 .isPhoneConfirmed(user.isPhoneProved())
                 .imagePath(user.getPathToAvatar())
-                .listOfReviews(user.getReviews())
+                .listOfReviews(user.getReviews().stream().map(ReviewDto::fromReview).collect(Collectors.toList()))
                 .countOfSubscribers(user.getSubscribers().size())
                 .countOfSubscriptions(user.getSubscriptions().size())
                 .build();

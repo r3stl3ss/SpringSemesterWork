@@ -42,8 +42,7 @@ public class ReviewController {
     public String getReviewsPage(Model model,
                                  @RequestParam(required = false, defaultValue = "") String filter,
                                  @PageableDefault(sort = {"id"}, direction = Sort.Direction.DESC) Pageable pageable) {
-
-        if (!(filter == null) && !filter.isEmpty()) {
+        if ((filter != null) && !filter.isEmpty()) {
             Page<Review> reviewsOrderedByIdAndHeader = reviewService.getAllReviewsByHeader(filter, pageable);
             model.addAttribute("page", reviewsOrderedByIdAndHeader);
         } else {
